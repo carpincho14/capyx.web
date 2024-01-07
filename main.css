@@ -57,53 +57,18 @@ body {
     display: inline-block;
    
 }
-
-body {
-    background-color: black;
-    color: green;
-    font-family: 'Courier New', Courier, monospace;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; 
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
-
-.container {
-    text-align: center;
-    max-width: 800px; 
-    width: 100%; 
-    margin: 0 auto; 
 
 #loading-screen {
-    display: block; 
+    /* ... existing styles ... */
+    animation: blink 1.2s linear infinite;
 }
 
-#ascii-art, #additional-content, #terminal {
-    display: none; 
-
-#terminal {
-    padding: 20px;
+#dots {
+    /* Optional: Different animation speed for the dots */
+    animation: blink 1.2s linear infinite;
 }
 
-#terminal-output {
-    white-space: pre;
-    margin: 0;
-}
-
-#user-input {
-    background: none;
-    border: none;
-    color: green;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1em;
-    outline: none;
-    width: 100%;
-}
-
-@media (max-width: 600px) {
-    body {
-        font-size: 0.8em; 
-    }
-}
