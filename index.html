@@ -14,11 +14,14 @@
         }
         #loading-screen {
             text-align: center;
-            margin-top: 20%;
+            display: block; 
+        }
+        #ascii-art, #additional-content, #terminal {
+            text-align: center;
+            display: none;
         }
         #terminal {
             padding: 20px;
-            display: none; 
         }
         #terminal-output {
             white-space: pre;
@@ -38,25 +41,19 @@
 <body>
     <div id="loading-screen">Work in Progress<span id="dots">....</span></div>
 
-    <pre id="ascii-art" style="display: none;">
-        '  /$$$$$$$  /$$$$$$   /$$$$$$  /$$   /$$ /$$   /$$\
-        ' /$$_____/ |____  $$ /$$__  $$| $$  | $$|  $$ /$$/\
-        '| $$        /$$$$$$$| $$  \\ $$| $$  | $$ \\  $$$$/ 
-        '| $$       /$$__  $$| $$  | $$| $$  | $$  >$$  $$ \
-        '|  $$$$$$$|  $$$$$$$| $$$$$$$/|  $$$$$$$ /$$/\\  $$\
-        ' \\_______/ \\_______/| $$____/  \\____  $$|__/  \__/
-        '                    | $$       /$$  | $$         
-        '                    | $$      |  $$$$$$/          
-        '                    |__/       \\______/      
-
+    <pre id="ascii-art">
+░░      ░░░      ░░       ░░  ░░░░  ░  ░░░░  ░
+▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒▒  ▒▒  ▒▒▒  ▒▒  ▒▒
+▓  ▓▓▓▓▓▓▓  ▓▓▓▓  ▓       ▓▓▓▓    ▓▓▓▓▓    ▓▓▓
+█  ████  █        █  ██████████  █████  ██  ██
+██      ██  ████  █  ██████████  ████  ████  █
+                                              
     </pre>
 
-    <div id="additional-content" style="display: none;">
-        <div id="wip-text">WIP<span id="moving-dots">....</span></div>
+    <div id="additional-content">
+        <div>WIP<span id="moving-dots">....</span></div>
         <p>Nothing to be seen here at the moment</p>
-        <p>
-        you can try the command "help"
-        </p>
+        <p>Try the command "help"</p>
     </div>
 
     <div id="terminal">
@@ -87,27 +84,26 @@
                     if (command) {
                         terminalOutput.innerHTML += `c:Users\\Capyx&gt;${command}<br>`;
                         executeCommand(command);
+                        this.value = ''; 
                     }
-                    this.value = "";
                 }
             });
 
             function executeCommand(command) {
-            switch (command.toLowerCase()) {
-                case "help":
-                    terminalOutput.innerHTML += "Available commands:<br>- help<br>- github<br>";
-                    break;
-                case "github":
-                    terminalOutput.innerHTML += "https://github.com/carpincho14<br>";
-                    break;
-                default:
-                    terminalOutput.innerHTML += `Unknown command: ${command}<br>`;
-            }
-            scrollTerminalIntoView();
+                switch (command.toLowerCase()) {
+                    case "help":
+                        terminalOutput.innerHTML += "Available commands:<br>- help<br>- github<br>";
+                        break;
+                    case "github":
+                        terminalOutput.innerHTML += "https://github.com/carpincho14<br>";
+                        break;
+                    default:
+                        terminalOutput.innerHTML += `Unknown command: ${command}<br>`;
+                }
                 terminalOutput.scrollTop = terminalOutput.scrollHeight;
             }
 
-            let movingDots = document.getElementById("moving-dots");
+            const movingDots = document.getElementById("moving-dots");
             let dotCount = 0;
             setInterval(() => {
                 movingDots.textContent = '.'.repeat(dotCount % 4) + ' '.repeat(4 - dotCount % 4);
@@ -117,3 +113,4 @@
     </script>
 </body>
 </html>
+
