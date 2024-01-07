@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terminal Themed Header</title>
     <link rel="stylesheet" href="main.css">
+    <style>
+        /* Example styles */
+        body {
+            background-color: black;
+            color: green;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        #loading-screen {
+            text-align: center;
+            margin-top: 20%;
+        }
+    </style>
 </head>
 <body>
     <div id="loading-screen">Work in Progress<span id="dots">....</span></div>
@@ -20,5 +32,21 @@
                     | $$      |  $$$$$$/          
                     |__/       \______/      
     </pre>
+
+    <script>
+    
+        let dots = document.getElementById("dots");
+        let count = 0;
+        setInterval(() => {
+            dots.textContent = '.'.repeat(count % 4) + ' '.repeat(4 - count % 4);
+            count++;
+        }, 500);
+
+    
+        setTimeout(() => {
+            document.getElementById("loading-screen").style.display = "none";
+            document.getElementById("terminal-header").style.display = "block";
+        }, 3000);
+    </script>
 </body>
 </html>
