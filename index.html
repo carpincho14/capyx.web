@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terminal Themed Header</title>
-    <link rel="stylesheet" href="main.css">
     <style>
-        /* Example styles */
         body {
             background-color: black;
             color: green;
             font-family: 'Courier New', Courier, monospace;
+            margin: 0; /* Ensuring no default margin */
+            padding: 0; /* Ensuring no default padding */
         }
         #loading-screen {
             text-align: center;
             margin-top: 20%;
+        }
+        #terminal-header {
+            display: none; /* Initially hide the terminal header */
+            color: limegreen; /* Ensuring the color is visible */
+        }
+        #loading-dots {
+            color: limegreen; /* Ensuring the color is visible */
+            text-align: center;
+        }
+        p {
+            color: limegreen; /* Ensuring the paragraph text is visible */
         }
     </style>
 </head>
@@ -31,12 +42,12 @@
                            | $$       /$$  | $$          
                            | $$      |  $$$$$$/          
                            |__/       \______/      
-      </pre>
-      <div id="loading-dots">
-          <span id="dots">WIP....</span>
-      </div>
-      
-      <p>Nothing to see here at the moment</p>
+    </pre>
+    <div id="loading-dots">
+        <span>WIP....</span>
+    </div>
+    
+    <p>Nothing to see here at the moment</p>
 
     <script>
         // Simple loading dots animation
@@ -55,4 +66,3 @@
     </script>
 </body>
 </html>
-
