@@ -21,20 +21,24 @@
 <body>
     <div id="loading-screen">Work in Progress<span id="dots">....</span></div>
 
-    <pre id="terminal-header" style="display:none;">
-  /$$$$$$$  /$$$$$$   /$$$$$$  /$$   /$$ /$$   /$$
- /$$_____/ |____  $$ /$$__  $$| $$  | $$|  $$ /$$/
-| $$        /$$$$$$$| $$  \ $$| $$  | $$ \  $$$$/ 
-| $$       /$$__  $$| $$  | $$| $$  | $$  >$$  $$ 
-|  $$$$$$$|  $$$$$$$| $$$$$$$/|  $$$$$$$ /$$/\  $$
- \_______/ \_______/| $$____/  \____  $$|__/  \__/
-                    | $$       /$$  | $$          
-                    | $$      |  $$$$$$/          
-                    |__/       \______/      
-    </pre>
+    <pre id="terminal-header">
+        /$$$$$$$  /$$$$$$   /$$$$$$  /$$   /$$ /$$   /$$
+        /$$_____/ |____  $$ /$$__  $$| $$  | $$|  $$ /$$/
+        | $$        /$$$$$$$| $$  \ $$| $$  | $$ \  $$$$/ 
+        | $$       /$$__  $$| $$  | $$| $$  | $$  >$$  $$ 
+        |  $$$$$$$|  $$$$$$$| $$$$$$$/|  $$$$$$$ /$$/\  $$
+        \_______/ \_______/| $$____/  \____  $$|__/  \__/
+                           | $$       /$$  | $$          
+                           | $$      |  $$$$$$/          
+                           |__/       \______/      
+      </pre>
+      <div id="loading-dots">
+          <span id="dots">....</span>
+      </div>
+      
 
     <script>
-    
+        // Simple loading dots animation
         let dots = document.getElementById("dots");
         let count = 0;
         setInterval(() => {
@@ -42,7 +46,7 @@
             count++;
         }, 500);
 
-    
+        // Show terminal header after 3 seconds
         setTimeout(() => {
             document.getElementById("loading-screen").style.display = "none";
             document.getElementById("terminal-header").style.display = "block";
