@@ -63,7 +63,6 @@
         <div id="terminal-output"></div>
         <div>c:Users\\Capyx&gt;<input type="text" id="user-input" autofocus></div>
     </div>
-
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const loadingScreen = document.getElementById("loading-screen");
@@ -94,17 +93,17 @@
             });
 
             function executeCommand(command) {
-                switch (command.toLowerCase()) {
-                    case "help":
-                        terminalOutput.innerHTML += "There are no current commands at the moment. More commands will be added to navigate my page sooner or later.<br>";
-                        break;
-                    default:
-                        terminalOutput.innerHTML += `Unknown command: ${command}<br>`;
-                }
-                scrollTerminalIntoView();
+            switch (command.toLowerCase()) {
+                case "help":
+                    terminalOutput.innerHTML += "Available commands:<br>- help<br>- github<br>";
+                    break;
+                case "github":
+                    terminalOutput.innerHTML += "https://github.com/carpincho14<br>";
+                    break;
+                default:
+                    terminalOutput.innerHTML += `Unknown command: ${command}<br>`;
             }
-
-            function scrollTerminalIntoView() {
+            scrollTerminalIntoView();
                 terminalOutput.scrollTop = terminalOutput.scrollHeight;
             }
 
