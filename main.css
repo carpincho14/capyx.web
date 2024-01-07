@@ -47,3 +47,13 @@ body {
         width: 2.5em;
     }
 }
+
+#loading-dots {
+    text-align: center;
+  
+}
+
+#dots {
+    display: inline-block;
+   
+}
