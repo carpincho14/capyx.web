@@ -12,9 +12,37 @@
             margin: 0;
             padding: 0;
         }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+        @keyframes loadingDots {
+            0%, 100% {
+                content: ".";
+            }
+            25% {
+                content: "..";
+            }
+            50% {
+                content: "...";
+            }
+            75% {
+                content: "....";
+            }
+        }
         #loading-screen {
             text-align: center;
-            display: block; 
+            display: block;
+            animation: blink 1.5s infinite;
+        }
+        #dots {
+            display: inline-block;
+            margin-left: 5px;
+            animation: loadingDots 2s infinite;
         }
         #ascii-art, #additional-content, #terminal {
             text-align: center;
@@ -39,7 +67,7 @@
     </style>
 </head>
 <body>
-    <div id="loading-screen">Work in Progress<span id="dots">....</span></div>
+    <div id="loading-screen">Work in Progress<span id="dots"></span></div>
 
     <pre id="ascii-art">
 ░░      ░░░      ░░       ░░  ░░░░  ░  ░░░░  ░
