@@ -1,1 +1,14 @@
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#terminal-header {
+    color: limegreen;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre;
+}
 
