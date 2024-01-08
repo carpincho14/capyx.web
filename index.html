@@ -20,11 +20,11 @@
         }
         #terminal {
             padding: 20px;
+            text-align: left; 
         }
         #terminal-output {
             white-space: pre;
             margin: 0;
-            text-align: left;
         }
         #user-input {
             background: none;
@@ -40,6 +40,80 @@
 <body>
     <div id="loading-screen">Work in Progress<span id="dots">....</span></div>
 
+    <pre id="ascii-art">
+░░      ░░░      ░░       ░░  ░░░░  ░  ░░░░  ░
+▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒▒  ▒▒  ▒▒▒  ▒▒  ▒▒
+▓  ▓▓▓▓▓▓▓  ▓▓▓▓  ▓       ▓▓▓▓    ▓▓▓▓▓    ▓▓▓
+█  ████  █        █  ██████████  █████  ██  ██
+██      ██  ████  █  ██████████  ████  ████  █
+                                              
+    </pre>
+
+    <div id="additional-content">
+        <div>WIP<span id="moving-dots">....</span></div>
+        <p>Nothing to be seen here at the moment</p>
+        <p>Try the command "help"</p>
+    </div>
+
+    <div id="terminal">
+        <div id="terminal-output"></div>
+        <div><span id="prompt">c:Users\\Capyx&gt;</span><input type="text" id="user-input" autofocus></div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loadingScreen = document.getElementById("loading-screen");
+            const asciiArt = document.getElementById("ascii-art");
+            const additionalContent = document.getElementById("additional-content");
+            const terminal = document.getElementById("terminal");
+            const userInput = document.getElementById("user-input");
+            const terminalOutput = document.getElementById("terminal-output");
+
+            setTimeout(() => {
+                loadingScreen.style.display = "none";
+                asciiArt.style.display = "block";
+                additionalContent.style.display = "block";
+                terminal.style.display = "block";
+                userInput.focus();
+            }, 3000);
+
+            userInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    const command = this.value.trim();
+                    if (command) {
+                        terminalOutput.innerHTML += `<span id="prompt">c:Users\\Capyx&gt;</span>${command}<br>`;
+                        executeCommand(command);
+                        this.value = ''; 
+                    }
+                }
+            });
+
+            function executeCommand(command) {
+                switch (command.toLowerCase()) {
+                    case "help":
+                        terminalOutput.innerHTML += "Available commands:<br>- help<br>- github<br>- caleb<br>";
+                        break;
+                    case "github":
+                        terminalOutput.innerHTML += "https://github.com/carpincho14<br>";
+                        break;
+                    case "caleb":
+                        terminalOutput.innerHTML += "caleb loves chicken<br>";
+                        break;
+                    default:
+                        terminalOutput.innerHTML += `<span id="prompt">c:Users\\Capyx&gt;</span>Unknown command: ${command}<br>`;
+                }
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+            }
+
+            const movingDots = document.getElementById("moving-dots");
+            let dotCount = 0;
+            setInterval(() => {
+                movingDots.textContent = '.'.repeat(dotCount % 4) + ' '.repeat(4 - dotCount % 4);
+                dotCount++;
+            }, 500);
+        });
+    </script>
+</body>
     <pre id="ascii-art">
 ░░      ░░░      ░░       ░░  ░░░░  ░  ░░░░  ░
 ▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒▒  ▒▒  ▒▒▒  ▒▒  ▒▒
