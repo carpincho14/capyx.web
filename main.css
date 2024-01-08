@@ -63,11 +63,10 @@ body {
 }
 
 #loading-screen {
-    /* ... existing styles ... */
+
     animation: blink 1.2s linear infinite;
 }
 
 #dots {
-    /* Optional: Different animation speed for the dots */
-    animation: blink 0.8s linear infinite;
-}
+    
+    animation: blink 0.8s linear infinite}
