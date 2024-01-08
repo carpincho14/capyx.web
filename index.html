@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terminal Themed Header</title>
     <link rel="stylesheet" href="https://raw.githubusercontent.com/carpincho14/capyx.web/main/main.css">
+    <link rel="stylesheet" href="main.css">
     <style>
         body {
             background-color: black;
@@ -12,13 +13,9 @@
             font-family: 'Courier New', Courier, monospace;
             margin: 0;
             padding: 0;
-        }
-        #loading-screen {
             text-align: center;
-            display: block; 
         }
-        #ascii-art, #additional-content, #terminal {
-            text-align: center;
+        #loading-screen, #ascii-art, #additional-content, #terminal {
             display: none;
         }
         #terminal {
@@ -27,6 +24,7 @@
         #terminal-output {
             white-space: pre;
             margin: 0;
+            text-align: left;
         }
         #user-input {
             background: none;
@@ -97,13 +95,10 @@
                         break;
                     case "github":
                         terminalOutput.innerHTML += "https://github.com/carpincho14<br>";
-
                         break;
                     case "caleb":
                         terminalOutput.innerHTML += "caleb loves chicken<br>";
-                    
                         break;
-                
                     default:
                         terminalOutput.innerHTML += `Unknown command: ${command}<br>`;
                 }
@@ -120,5 +115,4 @@
     </script>
 </body>
 </html>
-</body>
-</html>
+
