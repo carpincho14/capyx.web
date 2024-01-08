@@ -14,17 +14,27 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            position: relative;
         }
         #loading-screen, #ascii-art, #additional-content, #terminal {
             display: block;
         }
         #loading-screen {
             text-align: center;
+            position: relative;
+        }
+        #loading-line {
+            background-color: green;
+            width: 2px;
+            height: 100%;
+            position: absolute;
+            animation: flicker 0.1s infinite alternate;
+            animation-delay: 2s; /* Delay the animation to start after 2 seconds */
         }
         #terminal {
             padding: 20px;
-            text-align: left; 
-            display: none;
+            text-align: left; /* Set text-align to left for the terminal */
+            display: none; /* Hide terminal initially */
         }
         #terminal-output {
             white-space: pre;
@@ -39,17 +49,28 @@
             outline: none;
             width: 100%;
         }
+
+        @keyframes flicker {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.5;
+            }
+        }
     </style>
 </head>
 <body>
-    <div id="loading-screen">Work in Progress<span id="dots">....</span></div>
+    <div id="loading-screen">Work in Progress<span id="dots">....</span>
+        <div id="loading-line"></div>
+    </div>
 
     <pre id="ascii-art">
-░░      ░░░      ░░       ░░  ░░░░  ░  ░░░░  ░
-▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒▒  ▒▒  ▒▒▒  ▒▒  ▒▒
-▓  ▓▓▓▓▓▓▓  ▓▓▓▓  ▓       ▓▓▓▓    ▓▓▓▓▓    ▓▓▓
-█  ████  █        █  ██████████  █████  ██  ██
-██      ██  ████  █  ██████████  ████  ████  █
+    ░░      ░░░      ░░       ░░  ░░░░  ░  ░░░░  ░
+    ▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒  ▒▒▒▒  ▒▒  ▒▒  ▒▒▒  ▒▒  ▒▒
+    ▓  ▓▓▓▓▓▓▓  ▓▓▓▓  ▓       ▓▓▓▓    ▓▓▓▓▓    ▓▓▓
+    █  ████  █        █  ██████████  █████  ██  ██
+    ██      ██  ████  █  ██████████  ████  ████  █
                                               
     </pre>
 
@@ -92,22 +113,37 @@
                 }
             });
 
-            function executeCommand(command) {
-                switch (command.toLowerCase()) {
-                    case "help":
-                        terminalOutput.innerHTML += "Available commands:<br>- help<br>- github<br>- caleb<br>";
-                        break;
-                    case "github":
-                        terminalOutput.innerHTML += "https://github.com/carpincho14<br>";
-                        break;
-                    case "caleb":
-                        terminalOutput.innerHTML += "caleb loves chicken<br>";
-                        break;
-                    default:
-                        terminalOutput.innerHTML += `<span id="prompt">c:Users\\Capyx&gt;</span>Unknown command: ${command}<br>`;
-                }
+function executeCommand(command) {
+    switch (command.toLowerCase()) {
+        case "help":
+            terminalOutput.innerHTML += "Available commands:<br>- help<br>- github<br>- caleb<br>- ping<br>- date<br>- clear<br>";
+            break;
+        case "github":
+            terminalOutput.innerHTML += "https://github.com/carpincho14<br>";
+            break;
+        case "ping":
+            const startTime = new Date().getTime();
+            terminalOutput.innerHTML += "Pinging...<br>";
+           
+            setTimeout(() => {
+                const endTime = new Date().getTime();
+                const pingTime = endTime - startTime;
+                terminalOutput.innerHTML += `Pong! Time: ${pingTime} ms<br>`;
                 terminalOutput.scrollTop = terminalOutput.scrollHeight;
-            }
+            }, 1000); 
+            break;
+        case "date":
+            const currentDate = new Date();
+            terminalOutput.innerHTML += `Current date: ${currentDate.toDateString()}<br>`;
+            break;
+        case "clear":
+            terminalOutput.innerHTML = "";
+            break;
+        default:
+            terminalOutput.innerHTML += `<span id="prompt">c:Users\\Capyx&gt;</span>Unknown command: ${command}<br>`;
+    }
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
 
             const movingDots = document.getElementById("moving-dots");
             let dotCount = 0;
@@ -119,6 +155,5 @@
     </script>
 </body>
 </html>
-
 
 
